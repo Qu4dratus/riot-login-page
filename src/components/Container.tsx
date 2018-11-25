@@ -24,10 +24,10 @@ const DynamicContainer = styled('div') <DynamicContainerProps & DynamicContainer
     height: 100%;
 
     width: ${({ width }) => width}%;
-    
+
     ${({ textColor, background }) => `
-        ${textColor && `text-color: ${textColor}`};
-        ${background && `background: ${background}; background-size: cover`};
+        ${textColor ? `text-color: ${textColor}` : ''};
+        ${background ? `background: ${background}; background-size: cover` : ''};
     `}
 `;
 
