@@ -6,16 +6,19 @@ import { SFC } from 'react';
 import styled from 'react-emotion';
 
 // Interfaces.
-interface DynamicContainerProps {
+export interface DynamicContainerProps {
     width: number,
-    textColor?: string,
     background?: string,
     className?: string,
+};
+
+export interface DynamicContainerContentProps extends DynamicContainerProps {
+    textColor?: string,
     children?: any
 };
 
 // Styled Components.
-const DynamicContainer = styled('div') <DynamicContainerProps>`
+const DynamicContainer = styled('div') <DynamicContainerProps & DynamicContainerContentProps>`
     background: ${({ background }) => background};
     color: ${({ textColor }) => textColor};
     width: ${({ width }) => width}%;
@@ -26,7 +29,7 @@ const DynamicContainer = styled('div') <DynamicContainerProps>`
 `;
 
 // Components.
-const Container: SFC<DynamicContainerProps> = ({
+const Container: SFC<DynamicContainerProps & DynamicContainerContentProps> = ({
     width,
     textColor,
     background,
