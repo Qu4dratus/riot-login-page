@@ -6,7 +6,7 @@ import { SFC } from 'react';
 import styled from 'react-emotion';
 
 // Interfaces.
-interface IComponentProps {
+interface DynamicContainerProps {
     width: number,
     textColor?: string,
     background?: string,
@@ -26,7 +26,7 @@ const DynamicContainer = styled('div')`
 `;
 
 // Components.
-const Container: SFC<IComponentProps> = ({
+const Container: SFC<DynamicContainerProps> = ({
     width,
     textColor,
     background,
