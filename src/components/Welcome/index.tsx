@@ -2,16 +2,14 @@
 import * as React from 'react';
 
 // Images.
-import jhin from '../img/jhin.jpg';
-import lol_logo from '../img/lol_logo.png';
+import jhin from '../../img/jhin.jpg';
+import lol_logo from '../../img/lol_logo.png';
 
 // Custom Components.
-import Container from './Container';
-import LoginButton from './Inputs/LoginButton';
-import SignUpButton from './Inputs/SignUpButton';
-import ResponsiveImage from './ResponsiveImage';
-
-
+import Container from '../Container';
+import LoginButton from '../Inputs/LoginButton';
+import SignUpButton from '../Inputs/SignUpButton';
+import ResponsiveImage from '../ResponsiveImage';
 
 // Components.
 const Welcome: React.SFC<{}> = () => (
