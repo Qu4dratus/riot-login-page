@@ -19,13 +19,16 @@ export interface DynamicContainerContentProps extends DynamicContainerProps {
 
 // Styled Components.
 const DynamicContainer = styled('div') <DynamicContainerProps & DynamicContainerContentProps>`
-    background: ${({ background }) => background};
-    color: ${({ textColor }) => textColor};
-    width: ${({ width }) => width}%;
-    ${({ background }) => background && 'background-size: cover'};
-    height: 100%;
     display: flex;
     flex-direction: row;
+    height: 100%;
+
+    width: ${({ width }) => width}%;
+    
+    ${({ textColor, background }) => `
+        ${textColor && `text-color: ${textColor}`};
+        ${background && `background: ${background}; background-size: cover`};
+    `}
 `;
 
 // Components.
