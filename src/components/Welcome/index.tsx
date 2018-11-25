@@ -15,7 +15,7 @@ import ResponsiveImage from '../ResponsiveImage';
 const Welcome: React.SFC<{}> = () => (
     <Container width={100}>
         <Container width={40} background={`url(${jhin}) center center`} />
-        <Container width={60} background='#18191b'>
+        <Container width={60} backgroundColor='18191b' direction='column' alignItems='center' justifyContent='center'>
             <h1
                 style={{
                     color: '#fff',
@@ -29,8 +29,10 @@ const Welcome: React.SFC<{}> = () => (
             <div>
                 <ResponsiveImage src={lol_logo} alt='League of Legends logo' />
             </div>
-            <LoginButton />
-            <SignUpButton />
+            <Container width={100} direction='row' alignItems='center' justifyContent='center'>
+                <LoginButton />
+                <SignUpButton />
+            </Container>
         </Container>
     </Container>
 );

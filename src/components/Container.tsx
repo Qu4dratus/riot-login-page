@@ -9,18 +9,28 @@ import styled from 'react-emotion';
 export interface DynamicContainerProps {
     width: number,
     background?: string,
+    backgroundColor?: string,
+    direction?: string,
     className?: string,
+    alignItems?: string,
+    justifyContent?: string,
 };
 
 export interface DynamicContainerContentProps extends DynamicContainerProps {
     textColor?: string,
-    children?: any
+    children?: any,
 };
 
 // Styled Components.
 const DynamicContainer = styled('div') <DynamicContainerProps & DynamicContainerContentProps>`
     display: flex;
-    flex-direction: row;
+    flex-direction: ${({ direction }) => direction};
+
+    ${({ justifyContent, alignItems }) => `
+        ${justifyContent ? `justify-content: ${justifyContent}` : ''};
+        ${alignItems ? `align-items: ${alignItems}` : ''};
+    `}
+
     height: 100%;
 
     width: ${({ width }) => width}%;
@@ -29,6 +39,10 @@ const DynamicContainer = styled('div') <DynamicContainerProps & DynamicContainer
         ${textColor ? `text-color: ${textColor}` : ''};
         ${background ? `background: ${background}; background-size: cover` : ''};
     `}
+
+    ${({ backgroundColor }) => `
+        ${backgroundColor ? `background-color: #${backgroundColor}` : ''}
+    `}
 `;
 
 // Components.
@@ -36,6 +50,10 @@ const Container: SFC<DynamicContainerProps & DynamicContainerContentProps> = ({
     width,
     textColor,
     background,
+    backgroundColor,
+    direction = 'row',
+    alignItems,
+    justifyContent,
     className,
     children,
 }) => (
@@ -44,6 +62,10 @@ const Container: SFC<DynamicContainerProps & DynamicContainerContentProps> = ({
             background={background}
             textColor={textColor}
             className={className}
+            backgroundColor={backgroundColor}
+            direction={direction}
+            alignItems={alignItems}
+            justifyContent={justifyContent}
         >
             {children}
         </DynamicContainer>
