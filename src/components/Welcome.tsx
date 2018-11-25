@@ -7,7 +7,11 @@ import lol_logo from '../img/lol_logo.png';
 
 // Custom Components.
 import Container from './Container';
+import LoginButton from './Inputs/LoginButton';
+import SignUpButton from './Inputs/SignUpButton';
 import ResponsiveImage from './ResponsiveImage';
+
+
 
 // Components.
 const Welcome: React.SFC<{}> = () => (
@@ -27,6 +31,8 @@ const Welcome: React.SFC<{}> = () => (
             <div>
                 <ResponsiveImage src={lol_logo} alt='League of Legends logo' />
             </div>
+            <LoginButton />
+            <SignUpButton />
         </Container>
     </Container>
 );
