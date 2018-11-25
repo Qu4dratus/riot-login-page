@@ -3,9 +3,10 @@ import * as React from 'react';
 
 // Emotion.
 import styled from 'react-emotion';
+import { addProp } from 'src/utils';
 
 // Interfaces.
-interface IResponsiveImage {
+interface ResponsiveImageProps {
     src: string,
     width?: string,
     alt?: string
@@ -14,17 +15,22 @@ interface IResponsiveImage {
 // Styled Components.
 const Image = styled('img')`
     max-width: 100%;
-    ${({ theme: { width } }) => width && 'width: ' + width};
+    ${({ theme }) => {
+        console.log(theme)
+        return `
+        ${addProp(theme, 0)}
+        `}
+    }
     height: auto;
 `;
 
 // Components.
-const ResponsiveImage: React.SFC<IResponsiveImage> = ({
+const ResponsiveImage: React.SFC<ResponsiveImageProps> = ({
     src,
     width,
     alt
 }) => (
-        <Image src={src} width={width} alt={alt}  />
+        <Image src={src} width={width}  alt={alt} />
     );
 
 export default ResponsiveImage;

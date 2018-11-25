@@ -2,22 +2,20 @@
 import * as React from 'react';
 
 // Images.
-import jhin from '../img/jhin.jpg';
-import lol_logo from '../img/lol_logo.png';
+import jhin from '../../img/jhin.jpg';
+import lol_logo from '../../img/lol_logo.png';
 
 // Custom Components.
-import Container from './Container';
-import LoginButton from './Inputs/LoginButton';
-import SignUpButton from './Inputs/SignUpButton';
-import ResponsiveImage from './ResponsiveImage';
-
-
+import Container from '../Container';
+import LoginButton from '../Inputs/LoginButton';
+import SignUpButton from '../Inputs/SignUpButton';
+import ResponsiveImage from '../ResponsiveImage';
 
 // Components.
 const Welcome: React.SFC<{}> = () => (
     <Container width={100}>
         <Container width={40} background={`url(${jhin}) center center`} />
-        <Container width={60} background='#18191b'>
+        <Container width={60} backgroundColor='18191b' direction='column' alignItems='center' justifyContent='center'>
             <h1
                 style={{
                     color: '#fff',
@@ -31,8 +29,10 @@ const Welcome: React.SFC<{}> = () => (
             <div>
                 <ResponsiveImage src={lol_logo} alt='League of Legends logo' />
             </div>
-            <LoginButton />
-            <SignUpButton />
+            <Container width={100} direction='row' alignItems='center' justifyContent='center'>
+                <LoginButton />
+                <SignUpButton />
+            </Container>
         </Container>
     </Container>
 );

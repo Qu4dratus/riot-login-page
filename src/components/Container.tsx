@@ -6,30 +6,54 @@ import { SFC } from 'react';
 import styled from 'react-emotion';
 
 // Interfaces.
-interface DynamicContainerProps {
+export interface DynamicContainerProps {
     width: number,
-    textColor?: string,
     background?: string,
+    backgroundColor?: string,
+    direction?: string,
     className?: string,
-    children?: any
+    alignItems?: string,
+    justifyContent?: string,
+};
+
+export interface DynamicContainerContentProps extends DynamicContainerProps {
+    textColor?: string,
+    children?: any,
 };
 
 // Styled Components.
-const DynamicContainer = styled('div') <DynamicContainerProps>`
-    background: ${({ background }) => background};
-    color: ${({ textColor }) => textColor};
-    width: ${({ width }) => width}%;
-    ${({ background }) => background && 'background-size: cover'};
-    height: 100%;
+const DynamicContainer = styled('div') <DynamicContainerProps & DynamicContainerContentProps>`
     display: flex;
-    flex-direction: row;
+    flex-direction: ${({ direction }) => direction};
+
+    ${({ justifyContent, alignItems }) => `
+        ${justifyContent ? `justify-content: ${justifyContent}` : ''};
+        ${alignItems ? `align-items: ${alignItems}` : ''};
+    `}
+
+    height: 100%;
+
+    width: ${({ width }) => width}%;
+
+    ${({ textColor, background }) => `
+        ${textColor ? `text-color: ${textColor}` : ''};
+        ${background ? `background: ${background}; background-size: cover` : ''};
+    `}
+
+    ${({ backgroundColor }) => `
+        ${backgroundColor ? `background-color: #${backgroundColor}` : ''}
+    `}
 `;
 
 // Components.
-const Container: SFC<DynamicContainerProps> = ({
+const Container: SFC<DynamicContainerProps & DynamicContainerContentProps> = ({
     width,
     textColor,
     background,
+    backgroundColor,
+    direction = 'row',
+    alignItems,
+    justifyContent,
     className,
     children,
 }) => (
@@ -38,6 +62,10 @@ const Container: SFC<DynamicContainerProps> = ({
             background={background}
             textColor={textColor}
             className={className}
+            backgroundColor={backgroundColor}
+            direction={direction}
+            alignItems={alignItems}
+            justifyContent={justifyContent}
         >
             {children}
         </DynamicContainer>
