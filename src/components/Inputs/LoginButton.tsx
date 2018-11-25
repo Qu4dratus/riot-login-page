@@ -1,13 +1,14 @@
 // React.
 import * as React from 'react';
 
-// Emotion.
+// Custom Components.
+import ButtonIcon from './ButtonIcon';
 
 // Components.
 const LoginButton: React.SFC<{}> = () => (
-    <div>
+    <ButtonIcon>
         a
-    </div>
+    </ButtonIcon>
 );
 
 export default LoginButton;

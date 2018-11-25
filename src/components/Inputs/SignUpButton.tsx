@@ -1,23 +1,19 @@
 // React.
 import * as React from 'react';
 
-// Emotion.
-import styled from 'react-emotion';
+// Custom Components.
+import ButtonIcon from './ButtonIcon';
 
 // Interfaces.
-interface ISignUpButton {
+interface SignUpButtonProps {
     text?: string
 };
 
-const ButtonWithIcon = styled('button')`
-    
-`;
-
 // Components.
-const SignUpButton: React.SFC<ISignUpButton> = ({ text = 'Login' }) => (
-    <ButtonWithIcon>
+const SignUpButton: React.SFC<SignUpButtonProps> = ({ text = 'Login' }) => (
+    <ButtonIcon>
         {text}
-    </ButtonWithIcon>
+    </ButtonIcon>
 );
 
 export default SignUpButton;
