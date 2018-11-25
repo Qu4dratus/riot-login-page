@@ -15,11 +15,11 @@ interface DynamicContainerProps {
 };
 
 // Styled Components.
-const DynamicContainer = styled('div')`
+const DynamicContainer = styled('div') <DynamicContainerProps>`
     background: ${({ background }) => background};
     color: ${({ textColor }) => textColor};
-    width: ${({ width }: IComponentProps) => width}%;
-    ${({background}) => background && 'background-size: cover'};
+    width: ${({ width }) => width}%;
+    ${({ background }) => background && 'background-size: cover'};
     height: 100%;
     display: flex;
     flex-direction: row;
